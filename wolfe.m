@@ -22,13 +22,14 @@ function [alphan,ok]=wolfe(par,x,y,D)
 % ---------------------------------
 
    
-   [F,G] = Oracle(par,x,y);
+   [F,J] = Oracle(par,x,y);
    
 
    % Initialisation
 
    alphan = 1;
    parn   = par;
+   ok = 0;
 
    while ok == 0
       
@@ -40,12 +41,12 @@ function [alphan,ok]=wolfe(par,x,y,D)
             ok = 2;
         end
         
-        [Fn,Gn] = Oracle(parn,x,y);
+        [Fn,Jn] = Oracle(parn,x,y);
         
       % Wolfe conditions
         
-        C1 = norm(Fn) <= norm(F) - omega1 * alphan * (G'*F)' * D;
-        C2 = (Gn'*Fn)' * D >= omega2 * (G'*F)' * D;
+        C1 = norm(Fn) <= norm(F) - omega1 * alphan * (J'*F)' * D;
+        C2 = (Jn'*Fn)' * D >= omega2 * (J'*F)' * D;
 
         if not(C1)
             alphamax = alphan;
