@@ -24,7 +24,7 @@ N200 = generate_N200(par(1:3),x);
 P300 = generate_P300(par(4:6),x);
 RP = generate_RP(par(7:9),x);
 gau_noise = 1/15 * randn(size(x));
-EEG = weighted_sum(par(10:12),N200,P300,RP);
+EEG = weighted_sum(par(10:12),N200,P300,RP)+gau_noise;
 
 
 
@@ -34,4 +34,3 @@ hold on
 plot(x,EEG)
 
 f = F_obj(EEG_obj,EEG);
-norm(f)

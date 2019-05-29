@@ -1,4 +1,4 @@
-%% Calculate the gradient of the objective function F = EEG - model
+%% Calculate the jacobian of the objective function F = EEG - model
 function [G] = grad(par,x)
 
 G = zeros(length(x),length(par));

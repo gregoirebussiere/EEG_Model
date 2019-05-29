@@ -1,3 +1,4 @@
+%% Calculation of residuals and jacobian
 function [F,G] = Oracle(par,x,y)
 N200 = generate_N200(par(1:3),x);
 P300 = generate_P300(par(4:6),x);
