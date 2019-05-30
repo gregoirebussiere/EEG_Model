@@ -9,6 +9,7 @@ means = [ 3 200 80 1 300 50 0.8 750 100 1 1 1]';
 se = [0.3 16 8 0.1 30 5 0.08 75 10 0.1 0.1 0.1];
 
 x = linspace(-500, 1500, 4001);
+x_int = x(600:3000);
 
 %Objective EEG
 N200_obj = generate_N200(means(1:3),x);
@@ -24,13 +25,17 @@ N200 = generate_N200(par(1:3),x);
 P300 = generate_P300(par(4:6),x);
 RP = generate_RP(par(7:9),x);
 gau_noise = 1/15 * randn(size(x));
-EEG = weighted_sum(par(10:12),N200,P300,RP)+gau_noise;
+EEG = weighted_sum(par(10:12),N200,P300,RP);
+EEG_int=EEG(600:3000);
 
 
-
-%plot of the objective and the generated EEGs
+%plot of the mean and the generated EEGs
 plot(x,EEG_obj)
 hold on 
 plot(x,EEG)
 
-f = F_obj(EEG_obj,EEG);
+%% Search of the generated EEG's parameters 
+
+y = EEG;
+par0 = means;
+par_opt = gauss_newton(par0,x,y);
