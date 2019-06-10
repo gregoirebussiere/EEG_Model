@@ -6,5 +6,5 @@
 
 function [P300] = generate_P300(par,x)
 % The functional form of the P300 stereotype is a scaled Gaussian function
-P300 = par(1) .* exp(-0.5 .* ((x-par(2)) ./ par(3)) .^ 2);
+P300 = par(1)*exp(-0.5 .* ((x-par(2)) ./ par(3)) .^ 2);
 end

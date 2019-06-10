@@ -8,8 +8,8 @@ function [alphan,ok]=wolfe(par,x,y,D)
 % omega2 : 2nd condition coefficient
 
 
-   omega1 = 0.1;
-   omega2 = 0.9;
+   omega1 = 0.01;
+   omega2 = 0.99;
 
    alphamin = 0.0;
    alphamax = inf;

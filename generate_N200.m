@@ -10,5 +10,5 @@ N200_zcr = (par(2)-par(3)) / 2;  % time of zero-crossing
 
 % The functional form of the N200 stereotype is a first derivative of a
 % Gaussian function
-N200 = par(1) .* exp(-0.5 * ((x-N200_zcr)/N200_hpd).^2) .* (-((x-N200_zcr)/N200_hpd));
+N200 = par(1)*exp(-0.5 * ((x-N200_zcr)/N200_hpd).^2) .* (-((x-N200_zcr)/N200_hpd));
 end
