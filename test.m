@@ -1,11 +1,13 @@
 %% Importation of the data and settings
+
 load('s112_ses1_sfinal.mat')
 cond = expinfo.condition;
 N200_window = 100:300; %research window for N200 estimation
 N200_subset = [16 10 4 5 12 19 18 11 6]; %subset of electrodes that are located in the N200 area
 
 
-%% Plots of the parameters estimation for each condition by averaging across electrodes and trials
+%% Plots of the parameters estimation by averaging across electrodes and trials (grouping by condition)
+
 par_0 = [1500 200 20 1.5 1500 40]; %first estimation of the parameters
 
 for i=1:6
@@ -20,7 +22,7 @@ end
 
 
 
-%% N200 estimations for each condition by averaging across electrodes
+%% N200 estimations for each trial by averaging across electrodes (grouping by conditions)
 
 for i=1:6
     study = condition_selection(data,cond,i); %selection of condition
@@ -40,6 +42,7 @@ for i=1:6
     
     subplot(2,6,6+i);
     histfit(N200_est(:,2),10,'kernel'); %histogram and density estimation
+    
 end
 
 
