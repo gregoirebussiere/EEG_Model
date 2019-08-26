@@ -1,4 +1,4 @@
-%% Second derivative of Gaussian
+%% Asymmetric second derivative of Gaussian (Final model)
 function [N200] = N200_2(par,x)
     N200 = zeros(1,length(x));
     for i=1:length(x)

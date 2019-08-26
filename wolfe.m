@@ -22,7 +22,7 @@ function [alphan,ok]=wolfe(par,x,y,D)
 % ---------------------------------
 
    
-   [F,J] = Oracle(par,x,y);
+   [F,J] = Oracle(par,x,y,1);
    
 
    % Initialisation
@@ -34,14 +34,14 @@ function [alphan,ok]=wolfe(par,x,y,D)
    while ok == 0
       
         parp = parn;
-        parn = par + (alphan*D);
+        parn = par + (alphan*D');
         
 
         if norm(parn-parp) < dltx 
             ok = 2;
         end
         
-        [Fn,Jn] = Oracle(parn,x,y);
+        [Fn,Jn] = Oracle(parn,x,y,1);
         
       % Wolfe conditions
         

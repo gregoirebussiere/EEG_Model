@@ -81,7 +81,7 @@ RP = @(x) -RP_amp .* (x < RP_rec) .* exp(-0.5 * log((RP_rec-x) / RP_sca).^2);
 %  - N200_sca: a scale parameter, the time from positive to negative peak, expressed in milliseconds
 %  - N200_amp: an amplitude parameter, expressed in microvolts
 
-N200_neg = 160;
+N200_neg = 200;
 N200_sca =  80;
 N200_amp =   3;
 
@@ -109,22 +109,26 @@ line([xMin xMax], [0, 0], 'linestyle', '--', 'color', 'k')
 
 %% Adding annotations
 % Mark observed N200 peak and 200ms point
-line([N200_neg N200_neg], -[2.1 1.9], 'color', 'k')
+%line([N200_neg N200_neg], -[2.1 1.9], 'color', 'k')
 line([     200      200], -[2.1 1.9], 'color', 'k')
+line([     300      300], -[2.1 1.9], 'color', 'k')
+line([     750      750], -[2.1 1.9], 'color', 'k')
 
 % Add bracket under N200 offset interval and label as \theta
-text( N200_neg + 18, -2.2, '\{', 'color', 'k', tops{:}, ...
-    'fontsize', 11, 'fontweight', 'normal', ...
-    'rotation', 90, 'HorizontalAlignment', 'center')
-text( N200_neg + 20, -2.35, '\theta', 'color', 'k', tops{:}, ...
-    'fontsize', 11, 'fontweight', 'normal', ...
-    'interpreter', 'tex', 'HorizontalAlignment', 'center')
+%text( N200_neg + 18, -2.2, '\{', 'color', 'k', tops{:}, ...
+%   'fontsize', 11, 'fontweight', 'normal', ...
+%    'rotation', 90, 'HorizontalAlignment', 'center')
+%text( N200_neg + 20, -2.35, '\theta', 'color', 'k', tops{:}, ...
+%    'fontsize', 11, 'fontweight', 'normal', ...
+%    'interpreter', 'tex', 'HorizontalAlignment', 'center')
 
 % Mark and label the N200 peak and the 200ms point
-text(200 + 100, -2.45, '200', tops{:}, 'fontsize', 8)
-line([200 275], [-2 -2.34], 'linestyle', ':', 'color', 'k')
-text(N200_neg - 100, -2.45, '160', tops{:}, 'fontsize', 8)
-line([160 85], [-2 -2.34], 'linestyle', ':', 'color', 'k')
+text(200 , -2.2, '200', tops{:}, 'fontsize', 8)
+text(300 , -2.2, '300', tops{:}, 'fontsize', 8)
+text(750 , -2.2, '750', tops{:}, 'fontsize', 8)
+%line([200 275], [-2 -2.34], 'linestyle', ':', 'color', 'k')
+%text(N200_neg - 100, -2.45, '160', tops{:}, 'fontsize', 8)
+%line([160 85], [-2 -2.34], 'linestyle', ':', 'color', 'k')
 
 % Add labels to the waveforms
 text( P300_loc + 150,  P300_amp * 1.0, 'P300', 'color', color{1}, tops{:})
